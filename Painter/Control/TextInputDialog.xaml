@@ -1,0 +1,20 @@
+﻿<Window x:Class="Painter.Control.TextInputDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Painter.Control"
+        mc:Ignorable="d"
+        Title="TextInputDialog" Height="200" Width="200"
+        WindowStyle="None">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <TextBlock>Enter text:</TextBlock>
+        <TextBox FontSize="20" Grid.Row="1" Name="tbInput" TextWrapping="Wrap" AcceptsReturn="True"/>
+        <Button Grid.Row="2" HorizontalAlignment="Right" Click="Button_Click">OK</Button>
+    </Grid>
+</Window>

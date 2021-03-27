@@ -1,0 +1,100 @@
+﻿<Window x:Class="Painter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Painter"
+        xmlns:control="clr-namespace:Painter.Control"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="38"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            
+            <ListBox x:Name="lbElements" SelectionChanged="lbElements_SelectionChanged">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2"/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Rectangle x:Name="leftRect" Fill="White"/>
+                                        <Border Grid.Column="1" x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Trigger.Setters>
+                                                <Setter TargetName="leftRect" Property="Fill" Value="Blue"/>
+                                            </Trigger.Setters>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Trigger.Setters>
+                                                <Setter TargetName="leftRect" Property="Fill" Value="LightBlue"/>
+                                            </Trigger.Setters>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Padding" Value="0"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBoxItem>
+                    <Image Source="Image/line.png" />
+                </ListBoxItem>
+                <ListBoxItem>
+                    <Image Source="Image/circle.png"/>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <Image Source="Image/ellipse.png"/>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <Image Source="Image/rectangle.png"/>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <Image Source="Image/pencil.png"/>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <Image Source="Image/text.png"/>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <Image Source="Image/picture.png"/>
+                </ListBoxItem>
+            </ListBox>
+            <Button x:Name="btnUndo" Click="btnUndo_Click" Background="Transparent" >
+                <Image Source="Image/undo.png"/>
+            </Button>
+            <Button x:Name="btnZoomIn" Click="btnZoomIn_Click" Background="Transparent">
+                <Image Source="Image/zoom_in.png"/>
+            </Button>
+            <Button x:Name="btnErase" Click="btnErase_Click" Background="Transparent">
+                <Image Source="Image/erase.png"/>
+            </Button>
+        </StackPanel>
+        <control:PainterCanvas x:Name="canvas" Grid.Column="1" Background="Azure">
+        </control:PainterCanvas>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <GroupBox Header="color" Margin="2">
+                <control:ColorPicker x:Name="colorPicker" ColorChanged="ColorPicker_ColorChanged"/>
+            </GroupBox>
+            <GroupBox Header="stroke" Grid.Row="1" Margin="2">
+                <Slider Minimum="0" Maximum="10" x:Name="sliderStroke" PreviewMouseUp="sliderStroke_PreviewMouseUp" ValueChanged="sliderStroke_ValueChanged"/>
+            </GroupBox>
+        </Grid>
+    </Grid>
+</Window>

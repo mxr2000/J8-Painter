@@ -1,17 +1,14 @@
-# J8-Painter
+# J8-Painter: A Windows desktop painter application made with WPF and C#
 
-wpf做的
+## Features：
 
-实现的功能有：
+- Draw basic geometries, including lines, rectangles, circles and ellipses
+- Draw random lines
+- Draw images from local storage
+- Select multiple elements
+- Drag and move, delete selected elements
+- Multiple undos of operations
 
-- 画 直线，矩形，圆形，椭圆
-- 乱画
-- 放照片
-- 选中，拖拽
-- 改变颜色和线条宽度
-- 删除元素
-- 撤销
-
-示例:
+## Exmaple:
 
 ![a](a.PNG)
